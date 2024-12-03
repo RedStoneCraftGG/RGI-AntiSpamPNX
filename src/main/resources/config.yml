@@ -1,0 +1,7 @@
+# Banned words list here
+banned-words: []
+
+# Special words list here
+# praxx user usually enables spamming, so we want to block them
+special-words:
+ - "$# got praxxed"

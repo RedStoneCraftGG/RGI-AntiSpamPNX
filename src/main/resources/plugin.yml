@@ -2,4 +2,5 @@ name: RGI-AntiSpam
 main: com.redstone.AntiSpam
 version: "1.0.0"
 api: "1.0.0"
+author: RedStoneCraftGG
 description: Blocks player from spamming
