@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.redstone'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation files('libs/Terra-6.2.1.jar')
+    implementation files('libs/natives-1.0.3.jar')
+    implementation files('libs/powernukkitx-1.20.40-r1.jar')
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << "-parameters"
+}
+
+jar {
+    manifest {
+        attributes(
+            'Main-Class': 'com.redstone.AntiSpam'
+        )
+    }
+}

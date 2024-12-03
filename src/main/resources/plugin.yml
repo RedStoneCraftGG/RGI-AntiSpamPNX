@@ -1,0 +1,5 @@
+name: RGI-AntiSpam
+main: com.redstone.AntiSpam
+version: "1.0.0"
+api: "1.0.0"
+description: Plugin pertama saya untuk PowerNukkitX
