@@ -2,6 +2,7 @@
 .gradle/
 .vscode/
 gradle/
+bin/
 
 # Ignore Gradle build output directory
 build/
