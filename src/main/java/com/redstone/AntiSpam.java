@@ -3,6 +3,7 @@ package com.redstone;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
 
 import cn.nukkit.Player;
 import cn.nukkit.event.EventHandler;
@@ -46,7 +47,7 @@ public class AntiSpam extends PluginBase implements Listener {
 
         // Praxx Filter
 
-        String formattedMessage = message.replaceAll("@\\S+", "$#");
+        String formattedMessage = message.replaceAll("@\\S+", Matcher.quoteReplacement("$#"));
         boolean matches = specialWords.stream().anyMatch(formattedMessage::contains);
 
         if (matches) {
