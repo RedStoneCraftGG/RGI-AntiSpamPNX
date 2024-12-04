@@ -3,6 +3,7 @@ package com.redstone;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.regex.Matcher;
 
 import cn.nukkit.Player;
@@ -17,6 +18,7 @@ public class AntiSpam extends PluginBase implements Listener {
     private List<String> specialWords;
     private final Map<String, Integer> spamCount = new HashMap<>();
     private final Map<String, Long> lastKillTime = new HashMap<>();
+    private final HashMap<UUID, String> lastMessages = new HashMap<>();
 
     @Override
     public void onEnable() {
@@ -36,6 +38,7 @@ public class AntiSpam extends PluginBase implements Listener {
     public void onPlayerChat(PlayerChatEvent event) {
         String message = event.getMessage();
         Player player = event.getPlayer();
+        UUID playerUUID = player.getUniqueId();
 
         for (String word : bannedWords) {
             if (message.toLowerCase().contains(word)) {
@@ -44,6 +47,22 @@ public class AntiSpam extends PluginBase implements Listener {
                 return;
             }
         }
+
+        if (lastMessages.containsKey(playerUUID)) {
+            String lastMessage = lastMessages.get(playerUUID);
+
+            if (message.equalsIgnoreCase(lastMessage)) {
+                player.sendMessage("§cYou cannot send the same message twice!");
+                event.setCancelled(true);
+                return;
+            }
+        }
+
+        lastMessages.put(playerUUID, message);
+
+        getServer().getScheduler().scheduleDelayedTask(this, () -> {
+            lastMessages.remove(playerUUID);
+        }, 200); // 10 seconds
 
         // Praxx Filter
 

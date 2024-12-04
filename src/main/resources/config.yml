@@ -2,6 +2,18 @@
 banned-words: []
 
 # Special words list here
-# praxx user usually enables spamming, so we want to block them
+# praxx user usually enables killsult for the first time or in purposes, so we want to block them
 special-words:
- - "$# got praxxed"
+    - "$# got praxxed"
+    - "Get good, $#"
+    - "I think your client needs a firmware update, $#"
+    - "I hope you have your respawn key bound, $#"
+    - "Maybe try a different game mode, $#"
+    - "I've seen NPCs put up a better fight, $#"
+    - "Maybe try playing with your monitor on, $#"
+    - "You're in the wrong lobby, $#"
+    - "$# honestly easiest kill of my entire life"
+    - "Is that the best you've got, $#?"
+    - "I'm not even trying, $#"
+    - "$# must be a fan of respawn screens"
+    - "Is your mouse sensitivity set to zero, $#?"
